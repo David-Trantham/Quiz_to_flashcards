@@ -1,3 +1,6 @@
+use std::fs::File;
+use std::io::{self, Read};
 fn main() {
-    println!("Hello, world!");
+    let file= File::open("test.txt")?;
+    println!("{}", file);
 }
