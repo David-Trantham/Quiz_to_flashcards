@@ -8,13 +8,13 @@ def readtest():
 
 
 def writetest():
-    file_writer = open(r"test_output.txt", "w")
+    file_writer = open(r"output.txt", "w")
     file_writer.write("This is\na new text document")
     file_writer.close()
-    file_reader = open(r"test_output.txt", "r")
+    file_reader = open(r"output.txt", "r")
     print(file_reader.read())
     file_reader.close()
     print("End of writetest")
 
-def cleanuptest():
-    remove("test_output.txt")
+def cleanupoutput():
+    remove("output.txt")

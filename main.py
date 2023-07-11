@@ -1,13 +1,17 @@
 from tests import *
+from answer2flashcard import *
 
 def runtests():
     print("Hello World")
     readtest()
     writetest()
-    cleanuptest()
+    cleanupoutput()
 
 def main():
-    runtests()
+    # runtests()
+    # initialize_output()
+    first_answer()
+
 
 if __name__ == "__main__":
     main()
