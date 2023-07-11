@@ -28,4 +28,18 @@ def first_answer():
         thisline = quiz.readline()
         print(question + "\n" + answer + "end")
 
-
+def all_answers():
+    quiz = open(QUIZ, "r")
+    quiz.readline() #Have to skip the first line
+    thisline = quiz.readline().strip()
+    for line in quiz:
+        question = ""
+        answer = ""
+        while (not(thisline.startswith("Your answer"))):
+            if thisline.endswith(ANSWER_IDENTIFIER):
+                thisline = thisline.removesuffix(ANSWER_IDENTIFIER) + "\n"
+                answer += thisline
+            question += thisline
+            thisline = quiz.readline()
+        print(question + ";" + answer)
+        thisline = quiz.readline()
