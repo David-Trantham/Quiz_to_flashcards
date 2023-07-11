@@ -6,10 +6,10 @@ def initialize_output(filepath): #Returns path to newly init'd file
     #Open file containing answers and get tag from first line
     get_name = open(filepath, "r") 
     firstline = get_name.readline()
-    tag = firstline.split(" - ")[1].strip()
+    tag = firstline.split(" - ")[1].strip().replace(" ", "_")
     get_name.close()
     #generate output file using tag as the name
-    output_path = tag+".txt"
+    output_path = "output/"+tag+".txt"
     new_output = open(output_path, "w")
     new_output.write("tags:" + tag)
     new_output.close()
@@ -43,8 +43,7 @@ def all_answers(filepath):
                 answer += thisline
             question += thisline
             thisline = quiz.readline()
-        print(question + ";" + answer)
-        anki_formatted_quiz += question + ";" + answer
+        anki_formatted_quiz += "\""+question+"\"" + ";" + "\""+answer+"\"\n"
         thisline = quiz.readline()
     return anki_formatted_quiz
 
