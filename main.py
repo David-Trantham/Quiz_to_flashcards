@@ -1,6 +1,13 @@
-print("Hello World")
+from tests import *
 
-input_file = open(r"test.txt", "r")
-print(input_file.readlines(2))
-print(input_file.readlines(2))
-input_file.
+def runtests():
+    print("Hello World")
+    readtest()
+    writetest()
+    cleanuptest()
+
+def main():
+    runtests()
+
+if __name__ == "__main__":
+    main()
