@@ -41,7 +41,7 @@ def all_answers(filepath):
             if thisline.endswith(ANSWER_IDENTIFIER):
                 thisline = thisline.removesuffix(ANSWER_IDENTIFIER) + "\n"
                 answer += thisline
-            question += thisline
+            if thisline != "\n": question += thisline
             thisline = quiz.readline()
         anki_formatted_quiz += "\""+question+"\"" + ";" + "\""+answer+"\"\n"
         thisline = quiz.readline()
