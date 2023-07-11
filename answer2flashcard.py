@@ -2,22 +2,23 @@ import os
 QUIZ = "Exam 1001 practice quiz.txt"
 ANSWER_IDENTIFIER = " ( Missed)\n"
 
-def initialize_output():
-    #TODO: Could also use the tag for filename
+def initialize_output(filepath): #Returns path to newly init'd file
     #Open file containing answers and get tag from first line
-    get_name = open(QUIZ, "r")
+    get_name = open(filepath, "r") 
     firstline = get_name.readline()
     tag = firstline.split(" - ")[1].strip()
     get_name.close()
-    #generate output file called output.txt
-    new_output = open(r"output.txt", "w")
+    #generate output file using tag as the name
+    output_path = tag+".txt"
+    new_output = open(output_path, "w")
     new_output.write("tags:" + tag)
     new_output.close()
+    return output_path
     
-def first_answer():
+def first_answer(filepath):
     question = ""
     answer = ""
-    quiz = open(QUIZ, "r")
+    quiz = open(filepath, "r")
     quiz.readline() #Have to skip the first line
     thisline = quiz.readline().strip()
     while (not(thisline.startswith("Your answer"))):
@@ -28,8 +29,9 @@ def first_answer():
         thisline = quiz.readline()
         print(question + "\n" + answer + "end")
 
-def all_answers():
-    quiz = open(QUIZ, "r")
+def all_answers(filepath):
+    anki_formatted_quiz = ""
+    quiz = open(filepath, "r")
     quiz.readline() #Have to skip the first line
     thisline = quiz.readline().strip()
     for line in quiz:
@@ -42,10 +44,14 @@ def all_answers():
             question += thisline
             thisline = quiz.readline()
         print(question + ";" + answer)
+        anki_formatted_quiz += question + ";" + answer
         thisline = quiz.readline()
+    return anki_formatted_quiz
 
 #I would like this function to accept a filepath and create an output with name based on the tag
 def quiz2anki(filepath):
     print(filepath)
-
-
+    output_path = initialize_output()
+    output_file = open(output_path, "a")
+    output_file.write(all_answers(filepath))
+    
