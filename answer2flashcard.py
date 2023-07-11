@@ -43,3 +43,9 @@ def all_answers():
             thisline = quiz.readline()
         print(question + ";" + answer)
         thisline = quiz.readline()
+
+#I would like this function to accept a filepath and create an output with name based on the tag
+def quiz2anki(filepath):
+    print(filepath)
+
+
