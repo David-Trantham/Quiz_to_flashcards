@@ -1,4 +1,5 @@
 from os import remove
+import os
 
 def readtest():
     input_file = open(r"test.txt", "r")
@@ -18,3 +19,7 @@ def writetest():
 
 def cleanupoutput():
     remove("output.txt")
+
+def fileswithinfolders():
+    dir = os.listdir("input")
+    for file in dir: print(file)

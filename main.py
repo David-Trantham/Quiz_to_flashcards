@@ -1,6 +1,6 @@
 from tests import *
 from answer2flashcard import *
-from sys import argv
+import os
 
 def runtests():
     print("Hello World")
@@ -9,15 +9,17 @@ def runtests():
     cleanupoutput()
 
 def main():
-    if len(argv)!=2: raise Exception(
-        "Please only include the filepath to quiz results as "+
-        "your command line argument!"
-    )
     # runtests()
     # initialize_output()
     # first_answer()
-    quiz2anki(argv[1])
-
+    # quiz2anki(argv[1])
+    fileswithinfolders()
+    print("hi there")
+    input_files = os.listdir("input")
+    for file in input_files:
+        filepath = os.fspath("input/"+file)
+        quiz2anki(filepath)
+        os.rename(filepath, "processed/"+file)
 
 if __name__ == "__main__":
     main()
