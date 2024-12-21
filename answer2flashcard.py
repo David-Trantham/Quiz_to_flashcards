@@ -36,12 +36,15 @@ def all_answers(filepath):
     for line in quiz:
         question = ""
         answer = ""
+        i = 0 #Neccesary for line break between question and answer choices
         while (not(thisline.startswith("Your answer"))):
+            if i == 1: question += "\n"
             if thisline.endswith(ANSWER_IDENTIFIER):
                 thisline = thisline.removesuffix(ANSWER_IDENTIFIER) + "\n"
                 answer += thisline
             if thisline != "\n": question += thisline
             thisline = quiz.readline()
+            i += 1
         anki_formatted_quiz += "\""+question+"\"" + ";" + "\""+answer+"\"\n"
         thisline = quiz.readline()
     return anki_formatted_quiz
