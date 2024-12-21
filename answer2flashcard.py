@@ -1,5 +1,4 @@
 import os
-QUIZ = "Exam 1001 practice quiz.txt"
 ANSWER_IDENTIFIER = " ( Missed)\n"
 
 def initialize_output(filepath): #Returns path to newly init'd file
@@ -16,7 +15,7 @@ def initialize_output(filepath): #Returns path to newly init'd file
     return output_path
     
 def first_answer(filepath):
-    question = ""
+    question = "\n"
     answer = ""
     quiz = open(filepath, "r")
     quiz.readline() #Have to skip the first line
