@@ -33,11 +33,13 @@ def all_answers(filepath):
     quiz = open(filepath, "r")
     quiz.readline() #Have to skip the first line
     thisline = quiz.readline().strip()
+    j = 0 #j is for janky (Allows for proper line break only on the first question)
     for line in quiz:
         question = ""
         answer = ""
         i = 0 #Neccesary for line break between question and answer choices
         while (not(thisline.startswith("Your answer"))):
+            if j == 1: question += "\n"
             if i == 1: question += "\n"
             if thisline.endswith(ANSWER_IDENTIFIER):
                 thisline = thisline.removesuffix(ANSWER_IDENTIFIER) + "\n"
@@ -45,6 +47,7 @@ def all_answers(filepath):
             if thisline != "\n": question += thisline
             thisline = quiz.readline()
             i += 1
+            j += 1
         anki_formatted_quiz += "\""+question+"\"" + ";" + "\""+answer+"\"\n"
         thisline = quiz.readline()
     return anki_formatted_quiz
