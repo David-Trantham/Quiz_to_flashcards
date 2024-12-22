@@ -19,7 +19,7 @@ def main():
     for file in input_files:
         filepath = os.fspath("input/"+file)
         quiz2anki(filepath)
-        os.rename(filepath, "processed/"+file)
+       # os.rename(filepath, "processed/"+file)
 
 if __name__ == "__main__":
     main()
